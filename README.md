@@ -6,6 +6,7 @@
     
         A side by side chart that compares how the five main regions in Africa perform against each other on selected governance indicators in 2000 and 2012. The indicators include control of corruption, government effectiveness, regulatory quality, and vice and accountability. Each indicator score ranges from -2.5 to 2.5 with the highest score being the best. At a glance, Southern and West Africa perform much more poorly on these indicators compared to North, East, and Central Africa.
         
+        
         > **Freedom House: 4 electoral democracies in Africa in 1990, increased to 20 this year**
         >
     
@@ -34,3 +35,5 @@
     - If the democratic process does not produce good governance in Africa, what does?
     - How did other developing countries get out of poverty and restructure their economy to a more highly-skilled one?
     - How have other countries reformed their education to get out of poverty?
+    - What is considered poverty? Where do you draw the line statistically?
+    - What caused the governments to become less effective.
