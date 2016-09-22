@@ -7,7 +7,7 @@ var bar_width = 300;
 var table_width = 1100;
 
 function setup() {
-    createCanvas(windowWidth, 2500);
+    createCanvas(windowWidth, 2000);
     loadTable('data/mean-gov-gini.csv', 'csv', 'header', showData);
 }
 
