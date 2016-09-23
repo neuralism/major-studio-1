@@ -31,7 +31,7 @@ function showData(data) {
     // annotations
     textStyle(NORMAL);
     textAlign(LEFT);
-    fill(0, 0, 0, 90);
+    fill(0, 0, 0, 150);
     text('In order of Good Governance', x_margin + 5, 115, 400, 100);    
     text('-2.5', x_margin + 280, 115, 100, 100);
     text('0', x_margin + 730, 115, 100, 100);
@@ -84,7 +84,7 @@ function showData(data) {
         rect(x_margin + 730, y_margin + y_padding + multiplier(i) + 6, bar_width, bar_height);
         
         // gini frontbar
-        fill('#999');
+        fill(255 - (gini / 100 * 255));
         rect(x_margin + 730, y_margin + y_padding + multiplier(i) + 6, gini / 100 * bar_width, bar_height);
         
         // gini value
@@ -96,6 +96,7 @@ function showData(data) {
         line(x_margin, y_margin + y_padding + multiplier(i) - 9, x_margin + table_width, y_margin + y_padding + multiplier(i) - 9);
         stroke(0, 0, 0, 100);
         line(x_margin + 430, y_margin + multiplier(i) + 98, x_margin + 430, y_margin + multiplier(i) + 124);
+        line(x_margin + 730, y_margin + multiplier(i) + 98, x_margin + 730, y_margin + multiplier(i) + 124);
     }
     
     // add last line
