@@ -12,7 +12,7 @@ function onLoadComplete(data) {
     sentences = RiTa.splitSentences(content);
     select('.corruptBtn').mousePressed(clickCorrupt);
     select('.bribeBtn').mousePressed(clickBribe);
-    show(bribery);
+    show(corruption);
 }
 
 function show(keyword) {
