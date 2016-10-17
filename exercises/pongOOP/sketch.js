@@ -3,6 +3,8 @@ var num = 10;
 
 var pongBalls = [];
 
+// dx = delta x
+
 function setup() {
     createCanvas(600, 600);
     rectMode(CENTER);
@@ -25,6 +27,7 @@ function PongBall(myX, myY) {
         push();
         translate(this.x, this.y);
         ellipse(0, 0, 15, 15);
+        
         pop();
     }
     

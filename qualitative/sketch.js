@@ -1,74 +1,128 @@
-var hash = [];
-var sorted = [];
-var textX = 100;
+var content;
+var bribery = 'brib'
+var corruption = 'corruption'
 
 function setup() {
-    createCanvas(windowWidth, windowHeight);
-    loadStrings('speech.txt', callback);
+    noCanvas();
+    RiTa.loadString('report.txt', onLoadComplete);
 }
 
-function callback(poem) {
-//    console.log(poem);
-    
-    for (var i in poem) {
-        //console.log(i + ' : ' + poem[i])
-    }
-    
-    for (var i in poem) {
-        var li = poem[i].split(' ');
-        for (var k in li) {
-            var clean = li[k].replace(/[.,-?!@#$%^&*()_~{}]/g, '');
-        
-            if (hash[clean] >= 1)
-                hash[clean] += 1;
-            else 
-                hash[clean] = 1;
+function onLoadComplete(data) {
+    content = RiString(data).toString().replace(/[\n\r\t]/g, ' ');
+    sentences = RiTa.splitSentences(content);
+    select('.corruptBtn').mousePressed(clickCorrupt);
+    select('.bribeBtn').mousePressed(clickBribe);
+    show(bribery);
+}
+
+function show(keyword) {
+        for (var i in sentences) {
+            if (sentences[i].toString().match(keyword)) {
+                createElement('div', sentences[i]).class('quote');
+            }
         }
-    }
-    
-    console.log('HASH -----------');
-    
-    for (i in hash)
-        console.log(i + ' : ' + hash[i])
-        // console.log(hash[0]); // this numbered index will return 'undefined'
-
-    console.log('HASH SORTTED -----------')
-    
-    // Sort by frequency
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
-    
-    for (var key in hash)
-        sorted.push([key, hash[key]]);   
-    
-    sorted.sort(function(a, b) {
-        a = a[1];
-        b = b[1];
+       
+        $('div.quote').each(function(index, value) {
+            TweenMax.from(this, 1, { opacity: 0, ease: Expo.easeOut, delay: index * 0.05 + 0.3 });
+        });
+       
+        var splitText = new SplitText('.quote', { type: 'words', wordsClass: 'word' });
         
-        return a < b ? 1 : (a > b ? -1 : 0);
-    });
-    
-    for (var i = 0; i < sorted.length; i++)
-        console.log(sorted[i][0] + ' : ' + sorted[i][1]);
+        $('div.word').each(function(index, value) {
+                var word = RiString($(value).text());
+                var pos = word.pos();
+          
+                //noun
+                for (var j = 0; j < pos.length; j++) {
+                    if (pos[j] === 'nn' || pos[j] === 'nns' || pos[j] === 'nnp' || pos[j] === 'nnps' || pos[j] === 'jj') {
+                        $(value).addClass('noun');
+                    }
+                }
+                
+                //verb
+                for (var k = 0; k < pos.length; k++) {
+                    if (pos[k] === 'vb' || pos[k] === 'vbd' || pos[k] === 'vbg' || pos[k] === 'vbn' || pos[k] === 'vbp' || pos[k] === 'vbz') {
+                        $(value).addClass('verb');
+                    }
+                }
+            
+                if (word.toString().match(keyword)) {
+                    $(value).removeClass('noun');       
+                    $(value).addClass('highlight');
+                }
+        });
+        
+        $('div.highlight').each(function(index, value) {
+            TweenMax.from(this, 2, { color: '#666', ease: Expo.easeOut, delay: 1, overwrite: true });
+        });
+        
+        $('div.noun').each(function(index, value) {
+            TweenMax.from(this, 1, { color: '#666', ease: Expo.easeOut, delay: 2, overwrite: true });
+        });
+        
+        $('div.verb').each(function(index, value) {
+            TweenMax.from(this, 1, { color: '#666', ease: Expo.easeOut, delay: 2, overwrite: true });
+        });
 }
 
-function draw() {
-    background(255);
-    translate(textX, height/2);
-
-    for (var i = 0; i < sorted.length; i++) {
-        var txtSize = sorted[i][1] * 1;
-        textSize(txtSize);
-        text(sorted[i][0], 0, 0);
-        
-        var txtWidth = textWidth(sorted[i][0]);
-        translate(txtWidth, 0);
-        
-        if (mouseIsPressed) {
-            line(0, txtSize * .25, 0, -txtSize * .75);
-        }
-    }
+function clearScreen() {
+    $('div.quote').each(function(index, value) { this.remove(); });
 }
 
-function mouseDragged() {
-    textX += mouseX - pmouseX;
+function clickCorrupt() {
+    TweenMax.killAll();
+    clearScreen();
+    show('corrupt')
 }
+
+function clickBribe() {
+    TweenMax.killAll();    
+    clearScreen();
+    show('brib')    
+}
+
+// ============
+
+// var text = RiString(data).toString().replace(/[\n\r\t]/g, ' ');
+//     var sentences = RiTa.splitSentences(text);
+
+//     for (var i in sentences) {
+//         if (sentences[i].toString().match(keyword)) {
+            
+//             var line = createElement('div', sentences[i]).class('quote');
+//             createElement('br');
+//             createElement('hr');
+            
+//         }
+//     }
+    
+//     var st = new SplitText('.quote', { type: 'words', wordsClass: 'word' });
+    
+//     $('div.word').each(function(index, value) {
+//         var word = RiString($(value).text());
+//         var pos = word.pos();
+        
+//         // noun
+//         for (var j = 0; j < pos.length; j++) {
+//             if (pos[j] === 'nn' || pos[j] === 'nns' || pos[j] === 'nnp' || pos[j] === 'nnps') {
+//                 $(value).addClass('noun');
+//             }
+//         }
+        
+//         // verb
+//         for (var k = 0; k < pos.length; k++) {
+//             if (pos[k] === 'vb' || pos[k] === 'vbd' || pos[k] === 'vbg' || pos[k] === 'vbn' || pos[k] === 'vbp' || pos[k] === 'vbz') {
+//                 $(value).addClass('verb');
+//             }
+//         }
+
+//         if (word.toString().match(keyword)) {
+//             $(value).removeClass('noun');       
+//             $(value).addClass('highlight');
+//         }
+
+//         TweenMax.from(this, 0.6, { opacity: 0, scale: 1, ease: Expo.easeOut, delay: index * 0.005, overwrite: true });
+//         //TweenMax.from(this, 5, { scrambleText: { text:"faascascasc", chars:"lowerCase", ease: Expo.easeOut }})
+//     });
+
+    //select('.corruptionBtn').mousePressed(click);
