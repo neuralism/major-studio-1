@@ -53,15 +53,15 @@ function show(keyword) {
         });
         
         $('div.highlight').each(function(index, value) {
-            TweenMax.from(this, 2, { color: '#666', ease: Expo.easeOut, delay: 1, overwrite: true });
+            TweenMax.from(this, 2, { color: '#3e3e3e', ease: Expo.easeOut, delay: 1, overwrite: true });
         });
         
         $('div.noun').each(function(index, value) {
-            TweenMax.from(this, 1, { color: '#666', ease: Expo.easeOut, delay: 2, overwrite: true });
+            TweenMax.from(this, 2, { color: '#3e3e3e', ease: Expo.easeOut, delay: 2, overwrite: true });
         });
         
         $('div.verb').each(function(index, value) {
-            TweenMax.from(this, 1, { color: '#666', ease: Expo.easeOut, delay: 2, overwrite: true });
+            TweenMax.from(this, 2, { color: '#3e3e3e', ease: Expo.easeOut, delay: 2, overwrite: true });
         });
 }
 
