@@ -16,9 +16,10 @@ function onLoadComplete(data) {
     show('corruption');
 }
 
-function show(keyword) {
+function show(k) {
+    var keyword = k.toLowerCase();
     for (var i in sentences) {
-        var match = Boolean(String(sentences[i]).match(keyword));
+        var match = Boolean(String(sentences[i]).toLowerCase().match(keyword));
         if (match) createElement('div', sentences[i]).class('quote');
     }
     var splitText = new SplitText('.quote', { type: 'words', wordsClass: 'word' });
@@ -26,7 +27,7 @@ function show(keyword) {
         TweenLite.from(this, 1, { opacity: 0, y: 50, ease: Power4.easeOut, delay: index * 0.05 + 0.25 });
     });
     $('div.word').each(function(index) {
-        var word = new RiString($(this).text().replace(/[,.%]/g, ''));
+        var word = new RiString($(this).text().toLowerCase().replace(/[,.%]/g, ''));
         var pos = word.pos();
         var match = Boolean(String(word).match(keyword));
         for (var i in pos) {
@@ -41,7 +42,7 @@ function show(keyword) {
         TweenLite.from(this, 2, { color: '#3e3e3e', ease: Power4.easeOut, delay: 1.1 });
     });
     $('div.pos').each(function(index, value) {
-        TweenLite.from(this, 3, { color: '#3e3e3e', ease: Power4.easeOut, delay: 2 });
+        TweenLite.from(this, 2.2, { color: '#3e3e3e', ease: Power4.easeOut, delay: 2 });
     });
 }
 
@@ -52,10 +53,15 @@ function update(event) {
     show(event.currentTarget.name);
 }
 
-function search() {
-    var keyword = $('#search').val();
+function search(event) {
+    var keyword = String($('#search').val().toLowerCase());
+    var match = Boolean(content.match(keyword));
     $('div').remove();
     TweenLite.to($('a'), 0.5, { opacity: 0.4, ease: Power4.easeOut });
-    content.match(keyword) ? createElement('div', 'Results for \"' + keyword + '\"').class('info') : createElement('div', 'No results for \"' + keyword + '\"').class('info');
-    show(keyword);
+    if (match) {
+        createElement('div', 'Results for \"' + keyword + '\"').class('info');
+        show(keyword);
+    } else {
+        createElement('div', 'No results for \"' + keyword + '\"').class('info');
+    }
 }
