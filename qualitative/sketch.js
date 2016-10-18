@@ -6,12 +6,14 @@ function setup() {
     RiTa.loadString('report.txt', loadComplete);
 }
 
-function loadComplete(data) {
-    content = data.replace(/[\n\r\t]/g, ' ');
+function loadComplete(c) {
+    content = c.replace(/[\n\r\t]/g, ' ');
     sentences = RiTa.splitSentences(content);
     $('.button').click(update);
     $('#submit').click(search);
-    $('#search').keypress(function(event) { if (event.which === 13) search(); });
+    $('#search').keypress(function(event) { 
+        if (event.which === 13) search(); 
+    });
     TweenLite.to($('a[name=corruption]'), 0.5, { opacity: 1, ease: Power4.easeOut });
     show('corruption');
 }
