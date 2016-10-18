@@ -61,7 +61,7 @@ function search(event) {
     var match = Boolean(content.toLowerCase().match(keyword));
     $('div').remove();
     TweenLite.to($('a'), 0.5, { opacity: 0.4, ease: Power4.easeOut });
-    if (match) {
+    if (match && keyword !== '') {
         createElement('div', 'Results for \"' + keyword + '\"').class('info');
         show(keyword);
     } else {
