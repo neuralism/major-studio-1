@@ -49,10 +49,11 @@ function show(k) {
 }
 
 function update(event) {
+    var keyword = event.currentTarget.name;
     $('div').remove();
     TweenLite.to($('a'), 0.5, { opacity: 0.4, ease: Power4.easeOut }); 
     TweenLite.to($('a[name=' + event.currentTarget.name + ']'), 0.5, { opacity: 1, ease: Power4.easeOut }); 
-    show(event.currentTarget.name);
+    show(keyword);
 }
 
 function search(event) {
