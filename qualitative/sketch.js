@@ -57,7 +57,7 @@ function update(event) {
 
 function search(event) {
     var keyword = String($('#search').val().toLowerCase());
-    var match = Boolean(content.match(keyword));
+    var match = Boolean(content.toLowerCase().match(keyword));
     $('div').remove();
     TweenLite.to($('a'), 0.5, { opacity: 0.4, ease: Power4.easeOut });
     if (match) {
