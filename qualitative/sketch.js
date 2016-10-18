@@ -3,10 +3,10 @@ var tags = ['nn', 'nns', 'nnp', 'vb', 'vbn'];
 
 function setup() {
     noCanvas();
-    RiTa.loadString('report.txt', onLoadComplete);
+    RiTa.loadString('report.txt', loadComplete);
 }
 
-function onLoadComplete(data) {
+function loadComplete(data) {
     content = data.replace(/[\n\r\t]/g, ' ');
     sentences = RiTa.splitSentences(content);
     $('.button').click(update);
