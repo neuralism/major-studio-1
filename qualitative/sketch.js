@@ -3,7 +3,7 @@ var tags = ['nn', 'nns', 'nnp', 'vb', 'vbn'];
 
 function setup() {
     noCanvas();
-    RiTa.loadString('report.txt', loadComplete);
+    RiTa.loadString('data/report.txt', loadComplete);
 }
 
 function loadComplete(c) {
