@@ -23,7 +23,7 @@ function show(k) {
         if (match) createElement('div', sentences[i]).class('quote');
     }
     var splitText = new SplitText('.quote', { type: 'words', wordsClass: 'word' });
-    $('div.quote').each(function(index, value) {
+    $('div.quote').each(function(index) {
         TweenLite.from(this, 1, { opacity: 0, y: 25, ease: Power4.easeOut, delay: index * 0.05 + 0.25 });
     });
     $('div.word').each(function(index) {
@@ -38,10 +38,10 @@ function show(k) {
         }
         if (match) $(this).addClass('highlight');
     });
-    $('div.highlight').each(function(index, value) {
+    $('div.highlight').each(function(index) {
         TweenLite.from(this, 2, { color: '#3e3e3e', ease: Power4.easeOut, delay: 1.1 });
     });
-    $('div.pos').each(function(index, value) {
+    $('div.pos').each(function(index) {
         TweenLite.from(this, 2.2, { color: '#3e3e3e', ease: Power4.easeOut, delay: 2 });
     });
 }
