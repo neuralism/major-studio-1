@@ -24,7 +24,7 @@ function show(k) {
     }
     var splitText = new SplitText('.quote', { type: 'words', wordsClass: 'word' });
     $('div.quote').each(function(index, value) {
-        TweenLite.from(this, 1, { opacity: 0, y: 50, ease: Power4.easeOut, delay: index * 0.05 + 0.25 });
+        TweenLite.from(this, 1, { opacity: 0, y: 25, ease: Power4.easeOut, delay: index * 0.05 + 0.25 });
     });
     $('div.word').each(function(index) {
         var word = new RiString($(this).text().toLowerCase().replace(/[,.%]/g, ''));
