@@ -26,7 +26,7 @@ function show(k) {
     $('div.quote').each(function(index) {
         TweenLite.from(this, 1, { opacity: 0, y: 25, ease: Power4.easeOut, delay: index * 0.05 + 0.25 });
     });
-    $('div.word').each(function(index) {
+    $('div.word').each(function() {
         var word = new RiString($(this).text().toLowerCase().replace(/[,.%]/g, ''));
         var pos = word.pos();
         var match = Boolean(String(word).match(keyword));
@@ -38,10 +38,10 @@ function show(k) {
         }
         if (match) $(this).addClass('highlight');
     });
-    $('div.highlight').each(function(index) {
+    $('div.highlight').each(function() {
         TweenLite.from(this, 2, { color: '#3e3e3e', ease: Power4.easeOut, delay: 1.1 });
     });
-    $('div.pos').each(function(index) {
+    $('div.pos').each(function() {
         TweenLite.from(this, 2.2, { color: '#3e3e3e', ease: Power4.easeOut, delay: 2 });
     });
 }
