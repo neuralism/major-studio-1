@@ -38,9 +38,9 @@ function show(k) {
                 if (pos[i] === tags[j] && !match) $(this).addClass('pos');
             }
         }
-        if (match) $(this).addClass('highlight');
+        if (match) $(this).addClass('keyword');
     });
-    $('div.highlight').each(function() {
+    $('div.keyword').each(function() {
         TweenLite.from(this, 2, { color: '#3e3e3e', ease: Power4.easeOut, delay: 1.1 });
     });
     $('div.pos').each(function() {
