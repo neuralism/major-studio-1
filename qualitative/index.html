@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <title>People &amp; Corruption: Africa Survey 2015</title>
+    <meta charset='UTF-8'>
+    <title>Key Topics on Corruption in Africa</title>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/plugins/CSSPlugin.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/easing/EasePack.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenLite.min.js"></script>
-    <script src="libraries/p5.js" type="text/javascript"></script>
-    <script src="libraries/p5.dom.js" type="text/javascript"></script>
-    <script src="libraries/rita-full.min.js" type="text/javascript"></script>
-    <script src="libraries/SplitText.min.js"></script>
-    <script src="sketch.js" type="text/javascript"></script>  
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-    <link href="styles.css" rel="stylesheet">        
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/plugins/CSSPlugin.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/easing/EasePack.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenLite.min.js'></script>
+    <script src='libraries/p5.js' type='text/javascript'></script>
+    <script src='libraries/p5.dom.js' type='text/javascript'></script>
+    <script src='libraries/rita-full.min.js' type='text/javascript'></script>
+    <script src='libraries/SplitText.min.js'></script>
+    <script src='sketch.js' type='text/javascript'></script>  
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet'>
+    <link href='styles.css' rel='stylesheet'>        
   </head>
   <body>
-  <h1>People &amp; Corruption: Africa Survey  2015</h1>
-  <a class="button" name="corruption" href='#'>Corruption</a>
-  <a class="button" name="brib" href="#">Bribery</a>
-  <a class="button" name="fraud" href="#">Fraud</a>
-  <a class="button" name="embezzle" href="#">Embezzlement</a>
-  <a class="button" name="police" href="#">Police</a>
-  <a class="button" name="politic" href="#">Political</a>
-  <a class="button" name="judicial" href="#">Judicial</a>   
-  <span class='search'><input id='search' type='text' value='search'></input> <button id='submit'>Search</button></span>
+  <h1>Key Topics on Corruption in Africa</h1>
+  <p>This visualisation retrieves sentences relating to key topics on corruption from a <a href='https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=0ahUKEwivg4vehOnPAhVEGD4KHQZrAeEQFggkMAE&url=http%3A%2F%2Ffiles.transparency.org%2Fcontent%2Fdownload%2F1941%2F12775%2Ffile%2F2015_GCB_SubSaharanAfrica_EN.pdf&usg=AFQjCNEVIcgszwB-iXNZJh7Cp1ThTJdJqg'>2015 Africa corruption report</a>.
+  <br>The words highlighted in white is the topic in view and the the words in light grey are the nouns and verbs in the sentence.</p>
+  <a class='button corruption' name='corruption' href='#'>Corruption</a>
+  <a class='button bribery' name='brib' href='#'>Bribery</a>
+  <a class='button fraud' name='fraud' href='#'>Fraud</a>
+  <a class='button embezzlement' name='embezzle' href='#'>Embezzlement</a>
+  <a class='button police' name='police' href='#'>Police</a>
+  <a class='button political' name='politic' href='#'>Political</a>
+  <a class='button judicial' name='judicial' href='#'>Judicial</a>   
+  <span class='search'><input id='search' type='text'></input> <button id='submit'>Search</button></span>
   <br /><br />
   </body>
 </html>
