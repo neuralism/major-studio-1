@@ -1,3 +1,4 @@
+// consider using https://highlightjs.org/
 var content;
 var keyword;
 var tags = ['nn', 'nns', 'nnp', 'vb', 'vbn'];
