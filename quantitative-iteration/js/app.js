@@ -1,4 +1,5 @@
 draw('indicator');
+
 d3.selectAll('img#indicator')
   .style('opacity', 1);
 
@@ -130,8 +131,6 @@ function draw(category) {
     //   // .style('top', '0px')
     //   .duration(500)
     //   .delay(function(d, i) { return i * 10; });
-
-
     
     d3.select('div.indicator')
       .on('mouseover', tabOverHandler)
@@ -165,7 +164,6 @@ function draw(category) {
 //   .each(function(d) {
 //     console.log(d);
 //   });
-
 
 function mouseOverHandler(event) {
   d3.select(this)
@@ -212,7 +210,4 @@ function tabClickHandler(event) {
     
   d3.select('img#' + selection)
     .style('opacity', 1);
-    
-  console.log(selection);
-
 }
