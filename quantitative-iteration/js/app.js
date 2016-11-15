@@ -131,7 +131,7 @@ function draw(category) {
     //   // .style('top', '0px')
     //   .duration(500)
     //   .delay(function(d, i) { return i * 10; });
-    
+
     d3.select('div.indicator')
       .on('mouseover', tabOverHandler)
       .on('mouseout', tabOutHandler)
@@ -154,6 +154,8 @@ function draw(category) {
       .on('click', tabClickHandler);
   
   });
+  
+
   
 }
 

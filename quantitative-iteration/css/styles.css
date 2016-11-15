@@ -9,6 +9,7 @@ body {
 #header-container {
   width: 960px;
   margin: 0 auto;
+  top: 10px;
 }
 
 #header {
@@ -21,12 +22,12 @@ body {
 }
 
 h1 {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 21px;
-  font-weight: 400;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
   padding: 0px;
   margin-top: 10px auto;
-  color: black;
+  color: #333;
 }
 
 /*.test {*/
@@ -52,7 +53,7 @@ div#container {
   position: relative;
   width: 960px;
   margin: auto;
-  top: 114px;
+  top: 109px;
   /*background-color: blue;*/
 }
 
