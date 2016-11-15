@@ -1,6 +1,6 @@
 > I am studying corruption in Sub-Saharan Africa (SSA) because I want to find out more about the relationship between corruption and inequality. I am using keyfindings from a corruption survey report to help highlight the context of corruption in SSA as well as gain insight on more specific forms of corruption, such as bribery, embezzlement, and fraud, just to name a few. My visualisation is based on the People and Corruption: Africa Survey 2015 which was jointly released by Transparency International and Afrobarometer. Transparency International is an international non-governmental organisation whose purpose is to combat corruption and prevent criminal activities arising from corruption. Afrobarometer is an African-led series of national public attitude surveys on democracy and governance in Africa.
 
-[![](http://neuralism.github.io/major-studio-1/quantitative-iteration/images/preview.png)](http://neuralism.github.io/major-studio-1/quantitative-iteration/)
+[![](/quantitative-iteration/images/preview.png)](http://neuralism.github.io/major-studio-1/quantitative-iteration/)
 
 # Major Studio 1
 
