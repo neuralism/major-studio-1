@@ -21,7 +21,7 @@ body {
   z-index: 1;
 }
 
-span.title {
+h1 {
   font-family: 'Noto Sans', sans-serif;
   font-size: 18px;
   font-weight: bold;
@@ -60,7 +60,6 @@ div#container {
 .row {
   position: relative;
   /*background-color: #ccc;*/
-  width: 960px;
   height: 30px;
   float: left;
   border-bottom: 0.5px solid #eee;
@@ -79,39 +78,39 @@ div#container {
   z-index: -1;
 }
 
-.index, .index-header {
+.index {
   width: 20px;
 }
 
-.country, .country-header {
+.country {
   width: 150px;
 }
 
-.indicator, .indicator-header {
+.indicator {
   width: 230px;
 }
 
-.indicator-value, .indicator-value-header {
+.indicator-value {
   width: 65px;
   font-family: 'Roboto Mono';
   text-align: right;
 }
 
-.gini, .gini-header {
+.gini {
   width: 190px;  
 }
 
-.gini-value, .gini-value-header {
+.gini-value {
   width: 65px;
   font-family: 'Roboto Mono';  
 }
 
-.info, .info-header {
-  width: 90px;
+.region {
+  width: 70px;
 }
 
-.region, .region-header {
-  width: 70px;
+.info {
+  width: 90px;
 }
 
 .bar-indicator-bg {
@@ -148,7 +147,7 @@ div#container {
 .bar-gini {
   width: 0px;
   height: 6px;
-  opacity: 1;
+  opacity: 0;
   background-color: green;
 }
 
