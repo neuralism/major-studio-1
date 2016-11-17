@@ -1,6 +1,6 @@
 > I am studying good governance in Sub-Saharan Africa (SSA) because I want to find out more about the relationship between good governance and inequality. I am using indicators from the Worldwide Governance Indicators as to see if the factors affecting good governance have any impact on inequality. My visualisation takes the mean of the governance indicators I have and compares it with the mean gini of all the SSA countries available to see if a pattern exists.
 
-[![](/quantitative-iteration/images/preview.png)](http://neuralism.github.io/major-studio-1/quantitative-iteration/)
+[![](/quantitative-iteration/images/preview.png)](http://neuralism.github.io/major-studio-1/quantitative-iternation/)
 
 # Major Studio 1
 
