@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='UTF-8'>
+    <title></title>
+    <link href='css/styles.css' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Noto+Sans:300,400,600,700' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">    
+    <script src='https://d3js.org/d3.v4.min.js'></script>
+  </head>
+  <body>
+    <div id='header-container'>
+      <div id='header'>
+        <h1>Does Good Governance Reduce Inequality in Sub-saharan Africa?</h1>
+        <div class='row' style='font-weight: bold; border-top: 1px solid #333; border-bottom: 0px;'>
+          <div class='cell index'>#</div>
+          <div class='cell country' name='country' style='cursor: pointer;'>
+            Country
+            <img class='arrow' id='country' src='images/arrow.svg' height='7px' style='left: 7px'>
+          </div>
+          <div class='cell indicator' name='indicator' style='cursor: pointer;'>
+            WGI Good Governance Indicator 
+            <img class='arrow' id='indicator' src='images/arrow.svg' height='7px' style='left: 7px'>
+            </div>
+          <div class='cell indicator-value'></div>
+          <div class='cell gini' name='gini' style='cursor: pointer;'>
+            Mean Gini from 1914–2011
+            <img class='arrow' id='gini' src='images/arrow.svg' height='7px' style='left: 7px'>
+          </div>
+          <div class='cell gini-value'></div>
+          <div class='cell info'>Period</div>
+          <div class='cell region' name='region' style='cursor: pointer;'>
+            Region
+            <img class='arrow' id='region' src='images/arrow.svg' height='7px' style='left: 7px'>
+          </div>
+        </div>
+        <div class='row' style='color: #999; font-family: Roboto Mono, Sans Serif;'>
+          <div class='cell index'></div>
+          <div class='cell country'></div>
+          <div class='cell indicator'>
+            <span style='width:75px; text-align:left; color: #ff4646;'>-2.5</span>
+            <span style='width:80px; text-align:center;'>0</span>
+            <span style='width:75px; text-align:right; color: #6464c8;'>2.5</span>
+          </div>
+          <div class='cell indicator-value'></div>
+          <div class='cell gini'>
+            <span style='width:100px; text-align:left; color: green; opacity: 0.5;'>0</span>
+            <span style='width:100px; text-align:right; color: green;'>1</span>  
+          </div>
+          <div class='cell gini-value'></div>
+          <div class='cell info'></div>
+          <div class='cell region'></div>
+        </div>
+      </div>
+    </div>
+    <script src='js/app.js'></script>
+    <div id='container'></div>
+  </body>
+</html>
