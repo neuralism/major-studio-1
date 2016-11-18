@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <title></title>
+    <link href='css/styles.css' rel='stylesheet'>
+    <link href='css/hint.css' rel='stylesheet'>    
+    <link href='https://fonts.googleapis.com/css?family=Noto+Sans:300,400,600,700' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Mono' rel='stylesheet'>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js'></script>
+    <script src='https://d3js.org/d3.v4.min.js'>
+    </script>
+</head>
+<body>
+    <div id='header-container'>
+        <div id='header'>
+            
+            <span class='title' style='font-size: 18px; line-height: 46px;' >Does Good Governance Reduce Inequality in Sub-saharan Africa?</span>
+            <span style='position: relative; left: 210px;'>      
+                <select id='regionList'>
+                    <option value='wgiMean'>Good Governance (Mean)</option>
+                    <option value='voiceAndAccountability'>Voice and Accountability</option>
+                    <option value="politicalStability">Political Stability</option>
+                    <option value="govEffectiveness">Gov Effectiveness</option>
+                    <option value="regQuality">Regulatory Quality</option>
+                    <option value="ruleOfLaw">Rule of Law</option>
+                    <option value="controlOfCorruption">Control of Corruption</option>                    
+                </select>
+            </span>
+            <div class='row' style='font-weight: bold; border-top: 1px solid #333; border-bottom: 0px;'>
+                <div class='cell index-header'>
+                    #
+                </div>
+                <div class='cell country-header' name='country' style='cursor: pointer;'>Country <img class='arrow' height='7px' id='country' src='images/arrow.svg' style='left: 7px'></div>
+                <div class='cell indicator-header' name='indicator' style='cursor: pointer;'>WGI Good Governance Indicator <img class='arrow' height='7px' id='indicator' src='images/arrow.svg' style='left: 7px'></div>
+                <div class='cell indicator-value-header'></div>
+                <div class='cell gini-header' name='gini' style='cursor: pointer;'>Mean Gini from 1914-2011 <img class='arrow' height='7px' id='gini' src='images/arrow.svg' style='left: 7px'></div>
+                <div class='cell gini-value-header'></div>
+                <div class='cell info-header'>
+                    Period
+                </div>
+                <div class='cell region-header' name='region' style='cursor: pointer;'>Region <img class='arrow' height='7px' id='region' src='images/arrow.svg' style='left: 7px'></div>
+            </div>
+            <div class='row' style='color: #999; font-family: Roboto Mono, Sans Serif;'>
+                <div class='cell index-header'></div>
+                <div class='cell country-header'></div>
+                <div class='cell indicator-header'>
+                    <span style='width:75px; text-align:left; color: #ff4646;'>-2.5</span> <span style='width:80px; text-align:center;'>0</span> <span style='width:75px; text-align:right; color: #6464c8;'>2.5</span>
+                </div>
+                <div class='cell indicator-value-header'></div>
+                <div class='cell gini-header'>
+                    <span style='width:100px; text-align:left; color: green; opacity: 0.5;'>0</span> <span style='width:100px; text-align:right; color: green;'>1</span>
+                </div>
+                <div class='cell gini-value-header'></div>
+                <div class='cell info-header'></div>
+            </div>
+        </div>
+    </div>
+    <script src='js/app.js'>
+    </script>
+    <div id='container'></div>
+</body>
+</html>
