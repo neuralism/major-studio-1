@@ -7,7 +7,7 @@ d3.selectAll('img#indicator')
 // LOAD DATA
 d3.json('data/data.json', function(d) {
     data = d;
-    data = _.sortBy(data, ['wgiMean']).reverse();
+    data = _.sortBy(data, dataset).reverse();
     createTable(data);
 });
 
@@ -107,8 +107,8 @@ function update() {
         .data(data)
         .each(function (d, i) {
             d3.select(this)
-                .style('width', '0px')
-                .style('opacity', 0)
+                // .style('width', '0px')
+                // .style('opacity', 0)
             .transition()
                 .duration(500)            
                 .style('width', d[dataset] / 2.5 * 120 + 'px')
@@ -119,8 +119,8 @@ function update() {
         .data(data)
         .each(function (d, i) {
             d3.select(this)
-                .style('width', '0px')
-                .style('opacity', 0)
+                // .style('width', '0px')
+                // .style('opacity', 0)
             .transition()
                 .duration(500)            
                 .style('width', d[dataset] / -2.5 * 120 + 'px')
@@ -153,12 +153,12 @@ function update() {
         .data(data)
         .each(function (d, i) { 
             d3.select(this)
-                .style('opacity', 0)
-                .style('width', '0px')
+                // .style('opacity', 0)
+                // .style('width', '0px')
             .transition()
                 .duration(500)
                 .style('opacity', 0 + (d['giniMean'] / 50 * 0.5))
-                .style('width', d['giniMean'] / 100 * 190 + 'px');  
+                .style('width', d['giniMean'] / 100 * 190 + 'px');
         });
             
     // UPDATE GINI FIELD
@@ -247,33 +247,29 @@ function mouseOutHandler(event) {
 
 function listHandler() {
     switch (this.selectedIndex) {
-        case 1:
+        case 0:
             dataset = 'wgiMean';
             break;
-        case 2:
+        case 1:
             dataset = 'voiceAndAccountability';
             break;
         case 2:
-            dataset = 'voiceAndAccountability';
-            break;
-        case 3:
             dataset = 'politicalStability';
             break;
-        case 4:
+        case 3:
             dataset = 'govEffectiveness';
             break;
-        case 5:
+        case 4:
             dataset = 'regQuality';
+            break;
+        case 5:
+            dataset = 'ruleOfLaw';
             break;            
         case 6:
-            dataset = 'ruleOfLaw';
-            break;   
-        case 7:
             dataset = 'controlOfCorruption';
             break;   
     }
     
-    console.log(dataset);
     update();
 }
 
@@ -284,16 +280,16 @@ function tabClickHandler() {
     
     switch (selection) {
         case 'country':
-            data = _.sortBy(data, ['country']);
+            data = _.sortBy(data, 'country');
             break;
         case 'indicator':
-            data = _.sortBy(data, ['wgiMean']).reverse();
+            data = _.sortBy(data, dataset).reverse();
             break;
         case 'gini':
-            data = _.sortBy(data, ['giniMean']).reverse();
+            data = _.sortBy(data, 'giniMean').reverse();
             break;
         case 'region':
-            data = _.sortBy(data, ['region']);
+            data = _.sortBy(data, 'region');
             break;            
     }
 
