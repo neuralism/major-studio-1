@@ -132,7 +132,7 @@ function update() {
     d3.selectAll('.cell.indicator-value')
         .data(data)
         .each(function (d, i) {
-            if (d['wgiMean'] >= 0) {
+            if (d[dataset] >= 0) {
                 var valueColour = '#6464c8';
                 var value = 2.5;
                 var spacing = '&nbsp';                
