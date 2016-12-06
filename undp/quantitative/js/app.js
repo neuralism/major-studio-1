@@ -1,5 +1,5 @@
 var data;
-var dataset = 'wgiMean';
+var dataset = 'voiceAndAccountability';
 
 d3.selectAll('img#indicator')
   .style('opacity', 1);
@@ -73,7 +73,7 @@ function createTable(d) {
         .append('div')
             .attr('class', 'hint--top  hint--rounded')
             .attr('aria-label', d['giniAggregatedYears'])            
-            .html('Aggregated');
+            .html('1914 – 2011');
     
     // CREATE REGION FIELD
     row.append('div')
@@ -248,26 +248,26 @@ function mouseOutHandler(event) {
 function listHandler() {
     switch (this.selectedIndex) {
         case 0:
-            dataset = 'wgiMean';
-            break;
-        case 1:
             dataset = 'voiceAndAccountability';
             break;
-        case 2:
+        case 1:
             dataset = 'politicalStability';
             break;
-        case 3:
+        case 2:
             dataset = 'govEffectiveness';
             break;
-        case 4:
+        case 3:
             dataset = 'regQuality';
             break;
-        case 5:
+        case 4:
             dataset = 'ruleOfLaw';
             break;            
-        case 6:
+        case 5:
             dataset = 'controlOfCorruption';
-            break;   
+            break;
+        case 6:
+            dataset = 'wgiMean';
+            break;            
     }
     
     update();
