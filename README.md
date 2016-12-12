@@ -1,4 +1,4 @@
-# Does Good Governance Reduce Inequality in Sub-saharan Africa?
+# Does Good Governance Reduce Inequality in Sub-Saharan Africa?
 
 #### Description
 This visualization compares good governance in Sub-Saharan African countries with their level of inequality. It aims to identify correlations between the two, e.g. does better control of corruption affect inequality? The Worldwide Governance Indicators (WGI) used here measure six dimensions of governance: voice and accountability, politically stability and absence of violence/terrorism, government effectiveness, regulatory quality, rule of law, and control of corruption.
