@@ -1,6 +1,12 @@
-> I am studying good governance in Sub-Saharan Africa (SSA) because I want to find out more about the relationship between good governance and inequality. I am using indicators from the Worldwide Governance Indicators as to see if the factors affecting good governance have any impact on inequality. My visualisation takes the mean of the governance indicators I have and compares it with the mean gini of all the SSA countries available to see if a pattern exists.
+# Does Good Governance Reduce Inequality in Sub-saharan Africa?
 
-[![](/UNDP/quantitative/images/preview.png)](http://neuralism.github.io/major-studio-1/UNDP/quantitative/)
+#### Description
+This visualization compares good governance in Sub-Saharan African countries with their level of inequality. It aims to identify correlations between the two, e.g. does better control of corruption affect inequality? The Worldwide Governance Indicators (WGI) used here measure six dimensions of governance: voice and accountability, politically stability and absence of violence/terrorism, government effectiveness, regulatory quality, rule of law, and control of corruption.
+
+#### Research Question
+I am studying good governance in Sub-Saharan Africa (SSA) because I want to find out more about the relationship between good governance and inequality. I am using indicators from the Worldwide Governance Indicators as to see if the factors affecting good governance have any impact on inequality. My visualization compares good governance in Sub-Saharan African countries with their level of inequality to see if a pattern exists.
+
+[![](/undp/quantitative/preview.png)](http://neuralism.github.io/major-studio-1/undp/quantitative/)
 
 # Major Studio 1
 
