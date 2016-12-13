@@ -10,7 +10,6 @@ d3.json('data/data.json', function(d) {
 
 // Mouse events
 $('.button').click(test);
-$('.button2').click(test);
 d3.selectAll('li a.wgi-selector').on('click', wgiHandler);
 
 d3.select('#rank-sort').on('click', tabClickHandler);
@@ -22,11 +21,7 @@ d3.select('#region-sort').on('click', tabClickHandler);
 function test(event) {
     $('.wgi-plot-holder').collapse('hide');
     $('.gini-plot-holder').collapse('hide');
-}
-
-function test2(event) {
-    $('.wgi-plot-holder').collapse('toggle');
-    $('.gini-plot-holder').collapse('toggle');
+    
 }
 
 function createTable(d) {
@@ -56,7 +51,7 @@ function createTable(d) {
     row.append('div').attr('class', 'rank col-lg-1').html('rank')
     row.append('div').attr('class', 'country col-lg-2').html('country');
     
-    row.append('div').attr('class', 'wgi-graphs col-lg-3');
+    row.append('div').attr('class', 'wgi-graphs col-lg-3 hidden-md hidden-xs');
     row.append('div').attr('class', 'wgi-value col-lg-1');
     
     row.append('div').attr('class', 'gini-graphs col-lg-3');
