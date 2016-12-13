@@ -66,7 +66,7 @@
     color: white;
     padding: 8px 10px;
     font-size: 12px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, Arian, sans-serif;
     line-height: 12px;
     white-space: nowrap; }
   [class*="hint--"][aria-label]:after {

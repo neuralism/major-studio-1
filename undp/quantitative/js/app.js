@@ -1,9 +1,6 @@
 var data;
 var dataset = 'voiceAndAccountability';
 
-d3.selectAll('img#indicator')
-  .style('opacity', 1);
-
 // LOAD DATA
 d3.json('data/data.json', function(d) {
     data = d;
@@ -11,175 +8,217 @@ d3.json('data/data.json', function(d) {
     createTable(data);
 });
 
-function createTable(d) {
+// Mouse events
+$('.button').click(test);
+d3.selectAll('li a.wgi-selector').on('click', wgiHandler);
+
+d3.select('#rank-sort').on('click', tabClickHandler);
+d3.select('#country-sort').on('click', tabClickHandler);
+d3.select('#wgi-sort').on('click', tabClickHandler);
+d3.select('#gini-sort').on('click', tabClickHandler);
+d3.select('#region-sort').on('click', tabClickHandler);
+
+function test(event) {
+    $('.wgi-plot-holder').collapse('hide');
+    $('.gini-plot-holder').collapse('hide');
     
-    //console.log(d)
-    // CREATE ROWS
+}
+
+function createTable(d) {
+
+    // CREATE EMPTY ROW
     d3.select('body')
         .data(data)
         .enter()
-        .select('div#container')
+        .select('div.container#table')
         .append('div')
-            .attr('class', 'row');
-            // .on('mouseover', mouseOverHandler)
-            // .on('mouseout', mouseOutHandler);
+            .attr('class', 'row')
+            .attr('id', function (d, i) { return 'row-' + i });
+            // .attr('style', 'cursor: pointer')
+            // .attr('data-toggle', 'collapse')
+            // .attr('data-target', function (d, i) { return '#row-' + i + ' .wgi-plot-holder, #row-' + i + ' .gini-plot-holder' });
 
-    // CREATE CELLS
-    var row = d3.selectAll('div#container').selectAll('.row');
+
+    // SELECT ALL PREVIOUSLY CREATED ROWS
+    var row = d3.selectAll('div.container#table').selectAll('.row');
+
+    /*
+    * -----------------------------------
+    *  CREATE COLS IN THE ROW
+    * -----------------------------------
+    */
+    
+    row.append('div').attr('class', 'rank col-lg-1').html('rank')
+    row.append('div').attr('class', 'country col-lg-2').html('country');
+    
+    row.append('div').attr('class', 'wgi-graphs col-lg-3');
+    row.append('div').attr('class', 'wgi-value col-lg-1');
+    
+    row.append('div').attr('class', 'gini-graphs col-lg-3');
+    row.append('div').attr('class', 'gini-value col-lg-1');
+    
+    // row.append('div').attr('class', 'info col-lg-1').html('info');    
+    row.append('div').attr('class', 'region col-lg-1').style('color', '#fff');
+     
+    // WGI Bar stuff
+    d3.selectAll('.wgi-graphs')
+        .append('div')
+            .attr('class', 'wgi-bar-holder');
+            
+    // WGI NEG BAR
+    d3.selectAll('.wgi-bar-holder')
+        .append('div')
+            .attr('class', 'wgi-neg-bar-holder')
+        .append('div')
+            .attr('class', 'wgi-neg-bar-bg')
+        .append('div')
+            .attr('class', 'wgi-neg-bar');
+            
+    // WGI POS BAR
+    d3.selectAll('.wgi-bar-holder')
+        .append('div')
+            .attr('class', 'wgi-pos-bar-holder')
+        .append('div')
+            .attr('class', 'wgi-pos-bar-bg')
+        .append('div')
+            .attr('class', 'wgi-pos-bar');
+     
+    // WGI Graph Stuff
+    d3.selectAll('.wgi-graphs')
+        .append('div')
+        .attr('class', 'wgi-plot-holder collapse')
+        .append('svg')
+        .attr('height', 100)
+        .attr('width', '100%')
+        .style('background-color', '#eee');
         
-    row.append('div').attr('class', 'cell index');
-    row.append('div').attr('class', 'cell country');
-    row.append('div').attr('class', 'cell indicator');
-    
-    // CREATE INDICATOR BARS
-    d3.selectAll('.cell.indicator')
+    // Gini Bar Stuff
+    d3.selectAll('.gini-graphs')
         .append('div')
-            .attr('class', 'y-axis-indicator')
+        .attr('class', 'gini-bar-holder')
         .append('div')
-            .attr('class', 'bar-indicator-bg')
+            .attr('class', 'gini-bar-bg')
+            .style('width', '100%')
         .append('div')
-            .attr('class', 'bar-indicator-negative');    
-    
-    d3.selectAll('.cell.indicator')
+            .attr('class', 'gini-bar')
+            .style('width', 100);
+        
+    // Gini Graph Stuff
+    d3.selectAll('.gini-graphs')
         .append('div')
-            .attr('class', 'bar-indicator-bg')
-        .append('div')
-            .attr('class', 'bar-indicator-positive')
-
-    // CREATE INDICATOR FIELD
-    row.append('div')
-        .attr('class', 'cell indicator-value')
-        .html('0.00');
-      
-    // CREATE GINI BAR 
-    row.append('div')
-        .attr('class', 'cell gini')
-        .append('div')
-          .attr('class', 'y-axis-gini')
-        .append('div')
-          .attr('class', 'bar-gini-bg')
-        .append('div')
-          .attr('class', 'bar-gini');
-      
-    // CREATE GINI FIELD
-    row.append('div')
-        .attr('class', 'cell gini-value')
-        .style('color', 'green')
-        .html('0.00');
-    
-    // CREATE PERIOD FIELD
-    row.append('div')
-        .attr('class', 'cell info')
-        .append('div')
-            .attr('class', 'hint--top  hint--rounded')
-            .attr('aria-label', d['giniAggregatedYears'])            
-            .html('1914 – 2011');
-    
-    // CREATE REGION FIELD
-    row.append('div')
-            .attr('class', 'cell region')
-        .append('div')
-            .attr('class', 'region-name')
-            .style('background-color', '#ccc')
-            .html('temp');
-    
+        .attr('class', 'gini-plot-holder collapse')
+        .append('svg')
+        .attr('height', 100)
+        .attr('width', '100%')
+        .style('background-color', '#eee');
+        
+        
     update();
+    
 }
+
 
 function update() {
     
-    // UPDATE INDEX
-    d3.selectAll('.index')
+    console.log('update');
+    // RELOAD RANK
+    d3.selectAll('.rank')
         .data(data)
         .html(function (d, i) {
             return i + 1 + '.'; 
     });
     
-    // UPDATE COUNTRY
+    // RELOAD COUNTRY
     d3.selectAll('.country')
         .data(data)
         .html(function (d, i) {
             return d['country']; 
         });
+        
     
-    // UPDATE INDICATOR BARS
-    d3.selectAll('.bar-indicator-positive')
+    // RELOAD WGI NEG BAR    
+    d3.selectAll('.wgi-neg-bar')
         .data(data)
         .each(function (d, i) {
             d3.select(this)
-                // .style('width', '0px')
-                // .style('opacity', 0)
             .transition()
-                .duration(500)            
-                .style('width', d[dataset] / 2.5 * 120 + 'px')
-                .style('opacity', 0.25 + d[dataset] / 2.5 * 0.75);
-        });
-    
-    d3.selectAll('.bar-indicator-negative')
-        .data(data)
-        .each(function (d, i) {
-            d3.select(this)
-                // .style('width', '0px')
-                // .style('opacity', 0)
-            .transition()
-                .duration(500)            
-                .style('width', d[dataset] / -2.5 * 120 + 'px')
-                .style('opacity', 0.25 + d[dataset] / -2.5 * 0.75);
-
+                .duration(500)
+                .style('opacity', 0.25 + d[dataset] / -2.5 * 0.75)
+                .styleTween('width', function () {
+                    var from = d3.select(this).style('width').split('px')[0] / d3.select('.wgi-neg-bar-holder').style('width').split('px')[0] * 100 + '%';
+                    var to = d[dataset] / -2.5 * 100 + '%';
+                    console.log(from);
+                    return d3.interpolateString(from, to);
+            });
     });
     
-    // UPDATE INDICATOR VALUE
-    d3.selectAll('.cell.indicator-value')
+    // RELOAD WGI POS BAR   
+    d3.selectAll('.wgi-pos-bar')
+        .data(data)
+        .each(function (d, i) {
+            d3.select(this)
+            .transition()
+                .duration(500)
+                .style('opacity', 0.25 + d[dataset] / 2.5 * 0.75)
+                .styleTween('width', function () {
+                    var from = d3.select(this).style('width').split('px')[0] / d3.select('.wgi-pos-bar-holder').style('width').split('px')[0] * 100 + '%';
+                    var to = d[dataset] / 2.5 * 100 + '%';
+                    console.log(from);
+                    return d3.interpolateString(from, to);
+            });
+    });
+        
+    
+    // RELOAD WGI VALUE
+    d3.selectAll('.wgi-value')
         .data(data)
         .each(function (d, i) {
             if (d[dataset] >= 0) {
                 var valueColour = '#6464c8';
                 var value = 2.5;
-                var spacing = '&nbsp';                
+                var spacing = '&nbsp;&nbsp; ';                
             } else {
                 var valueColour = '#ff4646';
                 var value = -2.5;
-                var spacing = '';                
+                var spacing = '&nbsp; ';                
             }
                         
             d3.select(this)
                 .style('color', valueColour)
                 .style('opacity', 0.5 + d[dataset] / value * 0.5)
                 .html(spacing + (d[dataset] * 1).toFixed(2));                
-        });
-    
-    // UPDATE GINI BAR
-    d3.selectAll('.bar-gini')
+        });        
+
+
+
+    // RELOAD GINI BAR
+    d3.selectAll('.gini-bar')
         .data(data)
-        .each(function (d, i) { 
+        .each(function (d, i) {
             d3.select(this)
-                // .style('opacity', 0)
-                // .style('width', '0px')
             .transition()
                 .duration(500)
                 .style('opacity', 0 + (d['giniMean'] / 50 * 0.5))
-                .style('width', d['giniMean'] / 100 * 190 + 'px');
+                .styleTween('width', function () {
+                    var from = d3.select(this).style('width').split('px')[0] / d3.select('.gini-graphs').style('width').split('px')[0] * 100 + '%';
+                    var to = String(d['giniMean'] + '%');
+                    console.log(from);
+                    return d3.interpolateString(from, to);
+            });
         });
-            
-    // UPDATE GINI FIELD
-    d3.selectAll('.cell.gini-value') 
+
+    // RELOAD GINI VALUE
+    d3.selectAll('.gini-value') 
         .data(data)
         .each(function (d, i) {
             d3.select(this)
                 .style('opacity', (d['giniMean'] / 100))
                 .style('color', 'green')
-                .html('&nbsp' + (d['giniMean'] / 100).toFixed(2));    
+                .html('&nbsp; &nbsp;' + (d['giniMean'] / 100).toFixed(2));    
         });
-        
-    // UPDATE INFO FIELD
-    d3.selectAll('.cell.info')
-        .data(data)
-        .each(function (d, i) {
-            d3.select(this)
-                .attr('aria-label', d['giniAggregatedYears']);
-        });
-    
-    d3.selectAll('.region-name')
+
+    // RELOAD REGION NAME
+    d3.selectAll('.region')
         .data(data)
         .each(function (d, i) {
 
@@ -192,121 +231,82 @@ function update() {
             d3.select(this)
                 .style('background-color', regionColour)
                 .html(d['region']);
-        });
+        });        
 
-    }
-
-d3.select('div.indicator-header')
-    // .on('mouseover', tabOverHandler)
-    // .on('mouseout', tabOutHandler)
-    .on('click', tabClickHandler);
-  
-  
-d3.select('div.gini-header')
-    // .on('mouseover', tabOverHandler)
-    // .on('mouseout', tabOutHandler)
-    .on('click', tabClickHandler);      
-
-d3.select('div.region-header')
-    // .on('mouseover', tabOverHandler)
-    // .on('mouseout', tabOutHandler)
-    .on('click', tabClickHandler);    
-
-d3.select('div.country-header')
-    // .on('mouseover', tabOverHandler)
-    // .on('mouseout', tabOutHandler)
-    .on('click', tabClickHandler);
-    
-d3.select('#regionList')
-    .on('change', listHandler);
-    
-
-function mouseOverHandler(event) {
-  d3.select(this)
-    .style('background-color', '#f9f9f9');
 }
-
-function mouseOutHandler(event) {
-  d3.select(this)
-    .style('background-color', 'transparent')
-}
-
-// function tabOverHandler(event) {
-//   var selection = d3.select(this).attr('name');
-//   d3.selectAll('div.' + selection) 
-//     .style('background-color', '#f9f9f9');
-// }
-
-// function tabOutHandler(event) {
-//   var selection = d3.select(this).attr('name');
-//   d3.selectAll('div.' + selection)
-//     .style('background-color', 'transparent');
-// }
-
-
-
-function listHandler() {
-    switch (this.selectedIndex) {
-        case 0:
-            dataset = 'voiceAndAccountability';
-            break;
-        case 1:
-            dataset = 'politicalStability';
-            break;
-        case 2:
-            dataset = 'govEffectiveness';
-            break;
-        case 3:
-            dataset = 'regQuality';
-            break;
-        case 4:
-            dataset = 'ruleOfLaw';
-            break;            
-        case 5:
-            dataset = 'controlOfCorruption';
-            break;
-        case 6:
-            dataset = 'wgiMean';
-            break;            
-    }
-    
-    update();
-}
-
 
 function tabClickHandler() {
 
-    var selection = d3.select(this).attr('name');
-    
+
+    var selection = d3.select(this).attr('id')
+
     switch (selection) {
-        case 'country':
+        case 'country-sort':
             data = _.sortBy(data, 'country');
             break;
-        case 'indicator':
+        case 'wgi-sort':
             data = _.sortBy(data, dataset).reverse();
             break;
-        case 'gini':
+        case 'gini-sort':
             data = _.sortBy(data, 'giniMean').reverse();
             break;
-        case 'region':
+        case 'region-sort':
             data = _.sortBy(data, 'region');
             break;            
     }
 
     update();
     
-    d3.select('img#country')
-    .style('opacity', 0);
+    // d3.select('img#country')
+    // .style('opacity', 0);
     
-    d3.select('img#indicator')
+    d3.select('img#wgi-sort')
     .style('opacity', 0);    
     
-    d3.select('img#gini')
-    .style('opacity', 0);  
+    // d3.select('img#gini')
+    // .style('opacity', 0);  
     
-    d3.select('img#region')
-    .style('opacity', 0);
+    // d3.select('img#region')
+    // .style('opacity', 0);
     
-    d3.select('img#' + selection)
-    .style('opacity', 1);
+    // d3.select('img#' + selection)
+    // .style('opacity', 1);
+}
+
+
+function wgiHandler() {
+
+    switch (d3.select(this).attr('value')) {
+        case 'voiceAndAccountability':
+            dataset = 'voiceAndAccountability';
+            d3.select('span.dropdown-menu-text').html('Voice and Accountability - 2014');
+            break;
+
+        case 'politicalStability':
+            dataset = 'politicalStability';
+            d3.select('span.dropdown-menu-text').html('Political Stability - 2014');            
+            break;
+            
+        case 'govEffectiveness':
+            dataset = 'govEffectiveness';
+            d3.select('span.dropdown-menu-text').html('Government Effectiveness - 2014');                  
+            break;
+            
+        case 'regQuality':
+            dataset = 'regQuality';
+            d3.select('span.dropdown-menu-text').html('Regulatory Quality - 2014');                     
+            break;
+            
+        case 'ruleOfLaw':
+            dataset = 'ruleOfLaw';
+            d3.select('span.dropdown-menu-text').html('Rule of Law in - 2014');                
+            break;   
+            
+        case 'controlOfCorruption':
+            dataset = 'controlOfCorruption';
+            d3.select('span.dropdown-menu-text').html('Control of Corruption - 2014');            
+            break;
+    }
+    
+    update();
 }
