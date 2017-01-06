@@ -345,32 +345,32 @@ function wgiHandler() {
     switch (d3.select(this).attr('value')) {
         case 'voiceAndAccountability':
             dataset = 'voiceAndAccountability';
-            d3.select('span.dropdown-menu-text').html('Voice and Accountability ( 2015 )');
+            d3.select('span.dropdown-menu-text').html('WGI: Voice and Accountability – 2015');
             break;
 
         case 'politicalStability':
             dataset = 'politicalStability';
-            d3.select('span.dropdown-menu-text').html('Political Stability ( 2015 )');            
+            d3.select('span.dropdown-menu-text').html('WGI: Political Stability – 2015');            
             break;
             
         case 'govEffectiveness':
             dataset = 'govEffectiveness';
-            d3.select('span.dropdown-menu-text').html('Government Effectiveness ( 2015 )');                  
+            d3.select('span.dropdown-menu-text').html('WGI: Government Effectiveness – 2015');                  
             break;
             
         case 'regQuality':
             dataset = 'regQuality';
-            d3.select('span.dropdown-menu-text').html('Regulatory Quality ( 2015 )');                     
+            d3.select('span.dropdown-menu-text').html('WGI: Regulatory Quality – 2015');                     
             break;
             
         case 'ruleOfLaw':
             dataset = 'ruleOfLaw';
-            d3.select('span.dropdown-menu-text').html('Rule of Law in ( 2015 )');                
+            d3.select('span.dropdown-menu-text').html('WGI: Rule of Law in – 2015');                
             break;   
             
         case 'controlOfCorruption':
             dataset = 'controlOfCorruption';
-            d3.select('span.dropdown-menu-text').html('Control of Corruption ( 2015 )');            
+            d3.select('span.dropdown-menu-text').html('WGI: Control of Corruption – 2015');            
             break;
     }
     
