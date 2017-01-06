@@ -239,7 +239,7 @@ function update() {
         .data(data)
         .each(function (d, i) {
             d3.select(this)
-                .style('color', 'green')
+                .style('color', 'gray')
                 .html(d['giniYear']);    
         });
     
