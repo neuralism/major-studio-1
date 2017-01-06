@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <meta name="viewport" content="width=device-width, initial-scale=1">  
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1">  -->
 <head>
 
     <!-- Latest compiled and minified CSS -->
@@ -9,13 +9,12 @@
             font-family: Arial, sans-serif;
             font-size: 12px;
         }
-        
+
         div {
             /*background-color: #eee;*/
             padding: 0px;
             margin: 0 auto;
         }
-
     
         #table div.row, #table div.container {
             border-bottom: 0.5px solid #eee;
@@ -31,13 +30,21 @@
         div.rank, div.country,
         div.wgi-bar-holder, div.wgi-value,
         div.gini-bar-holder, div.gini-value,
-        div.info, div.region {
+        div.gini-year, div.region {
             height: 40px;
             padding: 0px;
             margin: 0 auto;            
             display: flex;
             align-items: center;
         }
+        
+        div.gini-year {
+            height: 40px;
+            padding: 0px;
+            margin: 0 auto;            
+            display: flex;
+            align-items: center;
+        }        
         
         a {
             cursor: pointer;
@@ -59,7 +66,6 @@
             text-align: right;
         }
 
-    
         /*GINI*/
     
         div.gini-bar-holder {
@@ -139,7 +145,7 @@
         div.rank-header, div.country-header,
         div.wgi-graphs-header, div.wgi-value-header,
         div.gini-graphs-header, div.gini-value-header,
-        div.region-header {
+        div.gini-year-header, div.region-header {
             padding: 0px;
             margin: 0 auto; 
         }
@@ -191,10 +197,11 @@
         }
 
     </style>
-    <!--<link href='css/styles.css' rel='stylesheet'>    -->
+    <!--<link href='css/styles.css' rel='stylesheet'> -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenLite.min.js'></script>
     <script src='https://d3js.org/d3.v4.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js'></script>
 
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js'></script>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Mono' rel='stylesheet'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -202,44 +209,45 @@
     <title>Does Good Governance Affect Inequality in Sub-Saharan Africa?</title>
 </head>
 
-    <!--<button class='button'>Collapsible</button>-->
+    <!--<button class='button'>Toggle Collapse</button>-->
     
-    <div id='header' class='container' style='padding-top: 10px'>
+    <div id='header' class='container' style='padding-top: 35px'>
         <div class='row' style='border-bottom: 0.5px solid #eee;'>
-            <div class='title col-lg-7'>Does Good Governance Affect <br/>Inequality in Sub-Saharan Africa?</div>
-            <div class='description col-lg-5'>This visualization compares good governance in Sub-Saharan African countries with their level of inequality. It aims to identify correlations between the two, e.g. does better control of corruption affect inequality? The Worldwide Governance Indicators (WGI) used here measure six dimensions of governance: voice and accountability, politically stability and absence of violence/terrorism, government effectiveness, regulatory quality, rule of law, and control of corruption.</div>
+            <div class='title col-lg-6'>Does Good Governance Affect <br/>Inequality in Sub-Saharan Africa?</div>
+            <div class='description col-lg-6'>This visualization compares good governance in Sub-Saharan African countries with their level of inequality and aims to identify correlations between the two, e.g. does better control of corruption affect inequality? The 2015 Worldwide Governance Indicators (WGI) used here measures six dimensions of governance: voice and accountability, politically stability and absence of violence/terrorism, government effectiveness, regulatory quality, rule of law, and control of corruption. And they are compared with latest Gini available from the correspoding country.</div>
         </div>
         
         <div class='row' style='padding-top: 10px; padding-bottom: 10px; border-bottom: 0.5px solid #eee;'>
-            <div class='rank-header col-lg-1'><button id='rank-sort' type="button" class="btn btn-default disabled">Rank</button></div>
+            <!--<div class='rank-header col-lg-1'><button id='rank-sort' type="button" class="btn btn-default disabled">Rank</button></div>-->
             <div class='country-header col-lg-2'><button id='country-sort' type="button" class="btn btn-default">Country</button></div>
             <div class='wgi-graphs-header col-lg-3'>
                 
             <div class='btn-group'>
-              <button type="button" id='wgi-sort' value='voiceAndAccountability' class="btn btn-default"><span class='dropdown-menu-text'>Voice and Accountability - 2014</span></button>
+              <button type="button" id='wgi-sort' value='voiceAndAccountability' class="btn btn-default"><span class='dropdown-menu-text'>Voice and Accountability ( 2015 )</span></button>
               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="caret"></span>
     
               </button>
               <ul class='dropdown-menu left'>
-                    <li><a class='wgi-selector' value='voiceAndAccountability'>Voice and Accountability - 2014</a></li>
-                    <li><a class='wgi-selector' value='politicalStability'>Political Stability - 2014</a></li>
-                    <li><a class='wgi-selector' value='govEffectiveness'>Government Effectiveness - 2014</a></li>
-                    <li><a class='wgi-selector' value='regQuality'>Regualtory Quality - 2014</a></li>
-                    <li><a class='wgi-selector' value='ruleOfLaw'>Rule of Law - 2014</a></li>
-                    <li><a class='wgi-selector' value='controlOfCorruption'>Control of Corruption - 2014</a></li>
+                    <li><a class='wgi-selector' value='voiceAndAccountability'>Voice and Accountability ( 2015 )</a></li>
+                    <li><a class='wgi-selector' value='politicalStability'>Political Stability ( 2015 )</a></li>
+                    <li><a class='wgi-selector' value='govEffectiveness'>Government Effectiveness ( 2015 )</a></li>
+                    <li><a class='wgi-selector' value='regQuality'>Regualtory Quality ( 2015 )</a></li>
+                    <li><a class='wgi-selector' value='ruleOfLaw'>Rule of Law ( 2015 )</a></li>
+                    <li><a class='wgi-selector' value='controlOfCorruption'>Control of Corruption ( 2015 )</a></li>
               </ul>
             </div> 
                 
             </div>
             <div class='wgi-value-header col-lg-1'></div>
-            <div class='gini-graphs-header col-lg-3'><button id='gini-sort' type="button" class="btn btn-default">Gini Averaged from 1958 - 2011</button></div>
-            <div class='gini-value-header col-lg-1'> </div> 
+            <div class='gini-graphs-header col-lg-3'><button id='gini-sort' type="button" class="btn btn-default">Latest Available Gini Coefficent</button></div>
+            <div class='gini-value-header col-lg-1'></div>
+            <div class='gini-year-header col-lg-1'><button id='year-sort' type="button" class="btn btn-default">Year</button></div>             
             <div class='region-header col-lg-1'><button id='region-sort' type="button" class="btn btn-default">Region</button></div>       
         </div>
     
         <div class='row measure' style='height: 40px; border-bottom: 0.5px solid #eee;'>
-            <div class='col-lg-3'></div>
+            <div class='col-lg-2'></div>
             <div class='wgi-graphs-header col-lg-3'>
                 <div class='col-lg-4' style='padding-top: 10px; padding-bottom: 10px; padding-left: 0px; text-align: left; color: #e5243b;'>-2.5</div>
                 <div class='col-lg-4' style='padding-top: 10px; padding-bottom: 10px; text-align: center; color: #ccc;'>0</div>
@@ -255,9 +263,7 @@
         </div>
     </div>
     <div id='table' class='container'></div>
-    <script src='js/app.js'></script>    
-
-
-
+    <script src='js/app.js'></script>
+    
 </body>
 </html>

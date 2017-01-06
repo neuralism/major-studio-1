@@ -33,10 +33,10 @@ function createTable(d) {
         .select('div.container#table')
         .append('div')
             .attr('class', 'row')
-            .attr('id', function (d, i) { return 'row-' + i })
-            .attr('style', 'cursor: pointer')
-            .attr('data-toggle', 'collapse')
-            .attr('data-target', function (d, i) { return '#row-' + i + ' .wgi-plot-holder, #row-' + i + ' .gini-plot-holder' });
+            .attr('id', function (d, i) { return 'row-' + i });
+            // .attr('style', 'cursor: pointer')
+            // .attr('data-toggle', 'collapse')
+            // .attr('data-target', function (d, i) { return '#row-' + i + ' .wgi-plot-holder, #row-' + i + ' .gini-plot-holder' });
 
 
     // SELECT ALL PREVIOUSLY CREATED ROWS
@@ -51,7 +51,7 @@ function createTable(d) {
     row.append('div').attr('class', 'rank col-lg-1').html('rank')
     row.append('div').attr('class', 'country col-lg-2').html('country');
     
-    row.append('div').attr('class', 'wgi-graphs col-lg-3 hidden-md hidden-xs');
+    row.append('div').attr('class', 'wgi-graphs col-lg-3');
     row.append('div').attr('class', 'wgi-value col-lg-1');
     
     row.append('div').attr('class', 'gini-graphs col-lg-3');
