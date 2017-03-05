@@ -2,207 +2,11 @@
 <html lang="en">
   <!--<meta name="viewport" content="width=device-width, initial-scale=1">  -->
 <head>
-
-    <!-- Latest compiled and minified CSS -->
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            font-size: 12px;
-        }
-
-        div {
-            /*background-color: #eee;*/
-            padding: 0px;
-            margin: 0 auto;
-        }
-    
-        #table div.row, #table div.container {
-            border-bottom: 0.5px solid #eee;
-        }
-        
-        div.gini-graphs, div.wgi-graphs {
-            padding: 0px;
-            margin: 0 auto;
-            align-items: left;
-            width: '100%';
-        }
-        
-        div.rank, div.country,
-        div.wgi-bar-holder, div.wgi-value,
-        div.gini-bar-holder, div.gini-value,
-        div.gini-year, div.region {
-            height: 40px;
-            padding: 0px;
-            margin: 0 auto;            
-            display: flex;
-            align-items: center;
-        }
-        
-        div.gini-year {
-            height: 40px;
-            padding: 0px;
-            margin: 0 auto;            
-            display: flex;
-            align-items: center;
-        }        
-        
-        a {
-            cursor: pointer;
-        }
-        
-        
-        div.block {
-            background-color: blue;
-            height: 100px;
-            width: 100%;
-            float: left;
-            
-        }
-    
-        /*WGI*/
-        
-        .wgi-value, .wgi-value-header, .gini-value, .measure {
-            font-family: 'Roboto Mono';
-            text-align: right;
-        }
-
-        /*GINI*/
-    
-        div.gini-bar-holder {
-            width: '100%';
-            border-left: 0.5px dashed #ccc;
-            display: flex;
-            align-items: center;  
-        }
-        
-        div.gini-bar-bg {
-            width: '100%';
-            height: 10px;
-            background-color: #eee;
-        }
-        
-        div.gini-bar {
-            height: 10px;
-            width: 0px;
-            background-color: #56c02b;
-            float: left;
-        }
-        
-        /*WGI BAR*/
-        
-        div.wgi-bar-holder {
-            width: 100%;
-            display: flex;
-            align-items: center;  
-        }
-        
-        /*WGI NEG BAR*/
-        div.wgi-neg-bar-holder {
-            width: 50%;
-            display: flex;
-            align-items: center;            
-        }
-
-        div.wgi-neg-bar-bg {
-            float: right;
-            width: 100%;
-            height: 10px;
-            background-color: #eee;         
-        }
-        
-        div.wgi-neg-bar {
-            float: right;
-            width: 0px;
-            height: 10px;
-            background-color: #e5243b;
-            opacity: 0px;  
-        }
-        
-        /*WGI POS BAR*/
-        div.wgi-pos-bar-holder {
-            width: 50%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            border-left: 0.5px dashed #ccc;            
-        }
-
-        div.wgi-pos-bar-bg {
-            float: left;
-            width: 100%;
-            height: 10px;
-            background-color: #eee;         
-        }
-        
-        div.wgi-pos-bar {
-            float: left;
-            width: 0px;
-            height: 10px;
-            background-color: #0a97d9;
-            opacity: 0px;  
-        }
-        
-        div.rank-header, div.country-header,
-        div.wgi-graphs-header, div.wgi-value-header,
-        div.gini-graphs-header, div.gini-value-header,
-        div.gini-year-header, div.region-header {
-            padding: 0px;
-            margin: 0 auto; 
-        }
-        
-        div.region {
-            
-        }
-        
-        div.title {
-            padding: 0px;
-            margin: 0 auto;
-            font-family: Arial, sans-serif;
-            font-size: 26px;
-            font-weight: bold;            
-            border: 0px solid gray;     
-            line-height: 30px;
-        }
-        
-        div.description {
-            padding: 0px;
-            margin: 0 auto;
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-            padding-bottom: 20px;
-        }
-        
-        div.region {
-            border: none;
-            height: 30px;
-            padding: 3px 6px;
-            text-align: center;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            font-size: 12px;
-            border-radius: 6px;     
-            opacity: 0.5;
-            top: 5px;
-        }
-
-        #header.container {
-            padding: 10px 0px 0px 0px;
-            margin: 0 auto;
-        }
-        
-        #table {
-            padding: 0px;
-            margin: 0 auto;
-        }
-
-    </style>
-    <!--<link href='css/styles.css' rel='stylesheet'> -->
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenLite.min.js'></script>
     <script src='https://d3js.org/d3.v4.min.js'></script>
-
+    <link href='css/styles.css' rel='stylesheet'>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js'></script>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Mono' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -213,53 +17,50 @@
     
     <div id='header' class='container' style='padding-top: 35px'>
         <div class='row' style='border-bottom: 0.5px solid #eee;'>
-            <div class='title col-lg-6'>Does Good Governance Affect <br/>Inequality in Sub-Saharan Africa?</div>
-            <div class='description col-lg-6'>This visualization compares good governance in Sub-Saharan African countries with their level of inequality and aims to identify correlations between the two, e.g. does better control of corruption affect inequality? The 2015 Worldwide Governance Indicators (WGI) used here measures six dimensions of governance: voice and accountability, politically stability and absence of violence/terrorism, government effectiveness, regulatory quality, rule of law, and control of corruption. And they are compared with latest Gini available from the correspoding country.</div>
+            <div class='title col-xs-6'>Does Good Governance Affect <br/>Inequality in Sub-Saharan Africa?</div>
+            <div class='description col-xs-6'>This visualization compares the level good governance in <a href='http://www.africa.undp.org/content/rba/en/home/regioninfo.html' target='_blank'>Sub-Saharan African</a> countries with their level of inequality and aims to identify correlations between the two, e.g. does better control of corruption affect inequality? It uses indicators from the <a href='http://info.worldbank.org/governance/wgi/' target='_blank'>Worldwide Governance Indicators (WGI) 2015</a>, which measures six dimensions of governance: <a href='http://info.worldbank.org/governance/wgi/va.pdf' targe='_blank'>voice and accountability</a>, <a href='http://info.worldbank.org/governance/wgi/pv.pdf' targe='_blank'>politically stability and absence of violence/terrorism</a>, <a href='http://info.worldbank.org/governance/wgi/ge.pdf' targe='_blank'>government effectiveness</a>, <a href='http://info.worldbank.org/governance/wgi/rq.pdf' targe='_blank'>regulatory quality</a>, <a href='http://info.worldbank.org/governance/wgi/rl.pdf' targe='_blank'>rule of law</a>, and <a href='http://info.worldbank.org/governance/wgi/cc.pdf' targe='_blank'>control of corruption</a> and compares them with the latest Gini available from that country.</div>
         </div>
         
         <div class='row' style='padding-top: 10px; padding-bottom: 10px; border-bottom: 0.5px solid #eee;'>
-            <!--<div class='rank-header col-lg-1'><button id='rank-sort' type="button" class="btn btn-default disabled">Rank</button></div>-->
-            <div class='country-header col-lg-2'><button id='country-sort' type="button" class="btn btn-default">Country</button></div>
-            <div class='wgi-graphs-header col-lg-3'>
-                
+            <div class='country-header col-xs-2'>
+                <button id='country-sort' type="button" class="btn btn-default">Country</button>
+            </div>
+            <div class='wgi-graphs-header col-xs-4'>
             <div class='btn-group'>
-              <button type="button" id='wgi-sort' value='voiceAndAccountability' class="btn btn-default"><span class='dropdown-menu-text'>WGI: Voice and Accountability – 2015</span></button>
+              <button type="button" id='wgi-sort' value='voiceAndAccountability' class="btn btn-default"><span class='dropdown-menu-text'>WGI 2015: Voice and Accountability</span></button>
               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="caret"></span>
-    
               </button>
               <ul class='dropdown-menu left'>
-                    <li><a class='wgi-selector' value='voiceAndAccountability'>WGI: Voice and Accountability – 2015</a></li>
-                    <li><a class='wgi-selector' value='politicalStability'>WGI: Political Stability – 2015</a></li>
-                    <li><a class='wgi-selector' value='govEffectiveness'>WGI: Government Effectiveness – 2015</a></li>
-                    <li><a class='wgi-selector' value='regQuality'>WGI: Regualtory Quality – 2015</a></li>
-                    <li><a class='wgi-selector' value='ruleOfLaw'>WGI: Rule of Law – 2015</a></li>
-                    <li><a class='wgi-selector' value='controlOfCorruption'>WGI: Control of Corruption – 2015</a></li>
+                    <li><a class='wgi-selector' value='voiceAndAccountability'>WGI 2015: Voice and Accountability </a></li>
+                    <li><a class='wgi-selector' value='politicalStability'>WGI 2015: Political Stability</a></li>
+                    <li><a class='wgi-selector' value='govEffectiveness'>WGI 2015: Government Effectiveness</a></li>
+                    <li><a class='wgi-selector' value='regQuality'>WGI 2015: Regualtory Quality</a></li>
+                    <li><a class='wgi-selector' value='ruleOfLaw'>WGI 2015: Rule of Law</a></li>
+                    <li><a class='wgi-selector' value='controlOfCorruption'>WGI 2015: Control of Corruption</a></li>
               </ul>
             </div> 
-                
             </div>
-            <div class='wgi-value-header col-lg-1'></div>
-            <div class='gini-graphs-header col-lg-3'><button id='gini-sort' type="button" class="btn btn-default">Latest Available Gini Coefficent</button></div>
-            <div class='gini-value-header col-lg-1'></div>
-            <div class='gini-year-header col-lg-1'><button id='year-sort' type="button" class="btn btn-default">Year</button></div>             
-            <div class='region-header col-lg-1'><button id='region-sort' type="button" class="btn btn-default">Region</button></div>       
+            <div class='gini-graphs-header col-xs-3'><button id='gini-sort' type="button" class="btn btn-default">Latest Available Gini Coefficent</button></div>
+            <div class='gini-value-header col-xs-1'></div>
+            <div class='gini-year-header col-xs-1'><button id='year-sort' type="button" class="btn btn-default">Year</button></div>             
+            <div class='region-header col-xs-1'><button id='region-sort' type="button" class="btn btn-default">Region</button></div>       
         </div>
     
         <div class='row measure' style='height: 40px; border-bottom: 0.5px solid #eee;'>
-            <div class='col-lg-2'></div>
-            <div class='wgi-graphs-header col-lg-3'>
-                <div class='col-lg-4' style='padding-top: 10px; padding-bottom: 10px; padding-left: 0px; text-align: left; color: #e5243b;'>-2.5</div>
-                <div class='col-lg-4' style='padding-top: 10px; padding-bottom: 10px; text-align: center; color: #ccc;'>0</div>
-                <div class='col-lg-4' style='padding-top: 10px; padding-bottom: 10px; padding-right: 0px; text-align: right; color: #0a97d9;'>2.5</div>      
+            <div class='col-xs-2'></div>
+            <div class='wgi-graphs-header col-xs-3'>
+                <div class='col-xs-4' style='padding-top: 10px; padding-bottom: 10px; padding-left: 0px; text-align: left; color: #e5243b;'>-2.5</div>
+                <div class='col-xs-4' style='padding-top: 10px; padding-bottom: 10px; text-align: center; color: #ccc;'>0</div>
+                <div class='col-xs-4' style='padding-top: 10px; padding-bottom: 10px; padding-right: 0px; text-align: right; color: #0a97d9;'>2.5</div>      
             </div>
-            <div class='col-lg-1'></div>
-            <div class='gini-graphs-header col-lg-3'>
-                <div class='col-lg-6' style='padding-top: 10px; padding-bottom: 10px; padding-left: 0px; text-align: left; color: green; opacity: 0.5'>0</div>
-                <div class='col-lg-6' style='padding-top: 10px; padding-bottom: 10px; padding-right: 0px;  text-align: right; color: green;'>1</div>      
+            <div class='col-xs-1'></div>
+            <div class='gini-graphs-header col-xs-3'>
+                <div class='col-xs-6' style='padding-top: 10px; padding-bottom: 10px; padding-left: 0px; text-align: left; color: green; opacity: 0.5'>0</div>
+                <div class='col-xs-6' style='padding-top: 10px; padding-bottom: 10px; padding-right: 0px;  text-align: right; color: green;'>1</div>      
             </div>
-            <div class='col-lg-1'></div> 
-            <div class='col-lg-1'></div>
+            <div class='col-xs-1'></div> 
+            <div class='col-xs-1'></div>
         </div>
     </div>
     <div id='table' class='container'></div>
