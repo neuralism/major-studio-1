@@ -164,7 +164,7 @@ function update() {
                 .duration(400)
                 .style('opacity', 0.25 + d[dataset] / -2.5 * 0.75)
                 .style('width', function() {
-                    console.log(d[dataset])
+                    // console.log(d[dataset])
                     if (d[dataset] >= 0) {
                         return 0 + 'px';
                     } else {
@@ -220,7 +220,7 @@ function update() {
                 .duration(400)
                 .style('opacity', 0 + (d['latestGini'] / 50 * 0.5))
                 .style('width', function() {
-                    return d['latestGini'] / 100 * d3.select('.gini-bar-bg').style('width').split('px')[0] + 'px';
+                    return d['latestGini'] + '%';
                 })
         });
             
